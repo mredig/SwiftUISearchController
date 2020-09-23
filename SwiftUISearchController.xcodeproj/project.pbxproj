@@ -13,7 +13,7 @@
 		33D9697A251BB1C200E2EE0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33D96979251BB1C200E2EE0D /* Preview Assets.xcassets */; };
 		33D96985251BB1C300E2EE0D /* SwiftUISearchControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D96984251BB1C300E2EE0D /* SwiftUISearchControllerTests.swift */; };
 		33D96990251BB1C300E2EE0D /* SwiftUISearchControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D9698F251BB1C300E2EE0D /* SwiftUISearchControllerUITests.swift */; };
-		33D969A1251BB1F500E2EE0D /* SearchBarOverlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D969A0251BB1F500E2EE0D /* SearchBarOverlayer.swift */; };
+		33D969A1251BB1F500E2EE0D /* SearchBarInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D969A0251BB1F500E2EE0D /* SearchBarInjector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 		33D9698B251BB1C300E2EE0D /* SwiftUISearchControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUISearchControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33D9698F251BB1C300E2EE0D /* SwiftUISearchControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISearchControllerUITests.swift; sourceTree = "<group>"; };
 		33D96991251BB1C300E2EE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33D969A0251BB1F500E2EE0D /* SearchBarOverlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarOverlayer.swift; sourceTree = "<group>"; };
+		33D969A0251BB1F500E2EE0D /* SearchBarInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarInjector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 			children = (
 				33D96972251BB1C000E2EE0D /* SwiftUISearchControllerApp.swift */,
 				33D96974251BB1C000E2EE0D /* ContentView.swift */,
-				33D969A0251BB1F500E2EE0D /* SearchBarOverlayer.swift */,
+				33D969A0251BB1F500E2EE0D /* SearchBarInjector.swift */,
 				33D96976251BB1C200E2EE0D /* Assets.xcassets */,
 				33D9697B251BB1C200E2EE0D /* Info.plist */,
 				33D96978251BB1C200E2EE0D /* Preview Content */,
@@ -263,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33D96975251BB1C000E2EE0D /* ContentView.swift in Sources */,
-				33D969A1251BB1F500E2EE0D /* SearchBarOverlayer.swift in Sources */,
+				33D969A1251BB1F500E2EE0D /* SearchBarInjector.swift in Sources */,
 				33D96973251BB1C000E2EE0D /* SwiftUISearchControllerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-	@StateObject private var searchQueryData = SearchBarQueryData()
+	@StateObject private var searchQueryData = SearchBar.QueryData()
 
 	var body: some View {
 		NavigationView {
