@@ -6,17 +6,23 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			List {
+				Text("Selected Scope: \(searchQueryData.selectedSearchScope ?? "")")
 				ForEach(listContents(), id: \.self) { num in
 					Button(num) {
 						let token = UISearchToken(icon: UIImage(systemName: "number"), text: num)
 						token.representedObject = num
 						searchQueryData.searchTokens.append(token)
+						searchQueryData.searchScopes.append(num)
 					}
 				}
 			}
 			.navigationBarSearch(searchQueryData)
 			.navigationBarTitleDisplayMode(.inline)
 		}
+		.onAppear(perform: {
+			searchQueryData.searchScopes = ["fo", "fum"]
+			searchQueryData.selectedSearchScope = "fum"
+		})
 	}
 
 	private func listContents() -> [String] {
