@@ -24,8 +24,10 @@ Inspired by this [SO post](https://stackoverflow.com/a/62363466/2985369)
 struct SearchBarOverlayer: UIViewControllerRepresentable {
 	let searchQueryData: SearchBarQueryData
 
+	@State private var constants = PrivateContainer()
+
 	func makeUIViewController(context: Context) -> SearchBarWrapperController {
-		SearchBarWrapperController()
+		return SearchBarWrapperController()
 	}
 
 	func updateUIViewController(_ controller: SearchBarWrapperController, context: Context) {
@@ -33,7 +35,12 @@ struct SearchBarOverlayer: UIViewControllerRepresentable {
 	}
 
 	func makeCoordinator() -> Coordinator {
-		Coordinator(parent: self)
+		Coordinator(parent: self, searchController: constants.controller)
+	}
+
+	func configure(_ configure: @escaping (UISearchController) -> Void) -> Self {
+		configure(constants.controller)
+		return self
 	}
 
 	class Coordinator: NSObject, UISearchResultsUpdating {
@@ -42,15 +49,13 @@ struct SearchBarOverlayer: UIViewControllerRepresentable {
 
 		private var subs: Set<AnyCancellable> = []
 
-		init(parent: SearchBarOverlayer) {
+		init(parent: SearchBarOverlayer, searchController: UISearchController) {
 			self.parent = parent
-			self.searchController = UISearchController(searchResultsController: nil)
+			self.searchController = searchController
 
 			super.init()
 
 			searchController.searchResultsUpdater = self
-			searchController.hidesNavigationBarDuringPresentation = true
-			searchController.obscuresBackgroundDuringPresentation = false
 
 			parent.searchQueryData.objectWillChange.receive(on: RunLoop.main).sink(receiveValue: { [weak self] _ in
 				guard let self = self else { return }
@@ -85,6 +90,10 @@ struct SearchBarOverlayer: UIViewControllerRepresentable {
 			get { parent?.navigationItem.searchController }
 			set { parent?.navigationItem.searchController = newValue }
 		}
+	}
+
+	private class PrivateContainer {
+		let controller = UISearchController(searchResultsController: nil)
 	}
 }
 

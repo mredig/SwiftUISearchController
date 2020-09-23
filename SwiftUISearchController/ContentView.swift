@@ -18,7 +18,14 @@ struct ContentView: View {
 				}
 			}
 //			.navigationBarSearch($searchText)
-			.overlay(SearchBarOverlayer(searchQueryData: searchQueryData).frame(width: 0, height: 0))
+			.overlay(
+				SearchBarOverlayer(searchQueryData: searchQueryData)
+					.configure({ controller in
+						controller.hidesNavigationBarDuringPresentation = true
+						controller.obscuresBackgroundDuringPresentation = true
+					})
+					.frame(width: 0, height: 0)
+			)
 			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
