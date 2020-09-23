@@ -1,9 +1,6 @@
 import SwiftUI
 
 struct ContentView: View {
-//	@State private var searchText = ""
-//	@State private var searchTokens: [UISearchToken] = []
-
 	@StateObject private var searchQueryData = SearchBarQueryData()
 
 	var body: some View {
@@ -17,15 +14,7 @@ struct ContentView: View {
 					}
 				}
 			}
-//			.navigationBarSearch($searchText)
-			.overlay(
-				SearchBarOverlayer(searchQueryData: searchQueryData)
-					.configure({ controller in
-						controller.hidesNavigationBarDuringPresentation = true
-						controller.obscuresBackgroundDuringPresentation = true
-					})
-					.frame(width: 0, height: 0)
-			)
+			.navigationBarSearch(searchQueryData)
 			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
@@ -34,7 +23,6 @@ struct ContentView: View {
 		let nums = Array(1...100)
 		let letters = nums.map { "\($0)" }
 
-//		guard !searchText.isEmpty else { return letters }
 		guard !searchQueryData.searchText.isEmpty || !searchQueryData.searchTokens.isEmpty else { return letters }
 
 		let textResult = letters.filter { $0.contains(searchQueryData.searchText) }

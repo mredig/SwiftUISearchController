@@ -2,11 +2,21 @@ import SwiftUI
 import Combine
 
 
-//extension View {
-//	public func navigationBarSearch(_ searchText: Binding<String>) -> some View {
-//		overlay(SearchBarOverlayer(searchText: searchText).frame(width: 0, height: 0))
-//	}
-//}
+extension View {
+	func navigationBarSearch(
+		_ searchQuery: SearchBarQueryData,
+		configureSearchController: @escaping (UISearchController) -> Void = {
+			$0.hidesNavigationBarDuringPresentation = true
+			$0.obscuresBackgroundDuringPresentation = false
+		}) -> some View {
+
+		overlay(
+			SearchBarOverlayer(searchQueryData: searchQuery)
+				.configure(configureSearchController)
+				.frame(width: 0, height: 0)
+		)
+	}
+}
 
 /**
 
@@ -15,7 +25,7 @@ This doesn't actually draw anything on screen, but instead reaches into the UIKi
 Utilized via adding a `.overlay` to a view within the hierarchy you wish to inject a UISearchBar into. For example:
 
 ``` swift
-SearchBarOverlayer(searchText: searchText)
+SearchBarOverlayer(searchQueryData: searchQuery)
 	.frame(width: 0, height: 0)
 ```
 
