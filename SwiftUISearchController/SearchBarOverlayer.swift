@@ -21,6 +21,7 @@ extension View {
 /**
 
 This doesn't actually draw anything on screen, but instead reaches into the UIKit background and inserts a search controller into the parent navigation controller.
+Ultimately, this means that it will always need a `NavigationView` in its parent view hierarchy.
 
 Utilized via adding a `.overlay` to a view within the hierarchy you wish to inject a UISearchBar into. For example:
 
@@ -28,6 +29,8 @@ Utilized via adding a `.overlay` to a view within the hierarchy you wish to inje
 SearchBarOverlayer(searchQueryData: searchQuery)
 	.frame(width: 0, height: 0)
 ```
+
+The easiest way to use is through the convenient view extension `.navigationBarSearch(_:)`.
 
 Inspired by this [SO post](https://stackoverflow.com/a/62363466/2985369)
 */
